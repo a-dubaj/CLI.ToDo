@@ -14,5 +14,12 @@ jobs:
       with:
         go-version: '1.23'
 
-    - name: Build
-      run: go build -v ./...
+    - name: Enable Debug Logging
+      run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
+
+    - name: Build with Timestamped Logs
+      run: |
+        set -e
+        exec > >(while IFS= read -r line; do echo "$(date +'%Y-%m-%d %H:%M:%S') $line"; done)
+        exec 2>&1
+        go build -v ./...
