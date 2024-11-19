@@ -4,7 +4,7 @@ func main() {
 	todos := Todos{}
 	storage := NewStorage[Todos]("todos.json")
 	storage.Load(&todos)
-	todos.toggle(0)
-	todos.print()
+	cmdFlags := NewCmdFlags()
+	cmdFlags.Execute(&todos)
 	storage.save(todos)
 }
