@@ -2,8 +2,9 @@ package main
 
 func main() {
 	todos := Todos{}
-	todos.add("Buy milk") // TODO: for test only
-	todos.add("Buy tea")  // TODO: for test only
+	storage := NewStorage[Todos]("todos.json")
+	storage.Load(&todos)
 	todos.toggle(0)
 	todos.print()
+	storage.save(todos)
 }
