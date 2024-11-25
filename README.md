@@ -20,3 +20,5 @@ Simple CLI ToDo Application written in GoLang. Commands:
 
 ### Mark as done/undone
 - go run ./ -toggle 2 
+
+<img src="./assets/todoapp_cli.jpg" alt="Console view" width=""/>
